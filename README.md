@@ -9,7 +9,7 @@ Autori
 ------
 
 Nazev tymu
-- xlogin01 jmeno prijmeni 
+- xbalca11 Petr Balcar
 - xvlcek31 Otakar Vlček 
 - xknazo02 Rostislav Kňazovčík 
 - xpocar01 Jiří Počarovský
