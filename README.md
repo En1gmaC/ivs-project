@@ -11,10 +11,10 @@ Autori
 Nazev tymu
 - xlogin01 jmeno prijmeni 
 - xvlcek31 Otakar Vlček 
-- xbalca11 Petr Balcar
+- xlogin03 jmeno prijmeni 
 - xlogin04 jmeno prijmeni 
 
 Licence
 -------
 
-Tento program je poskytovan
+Tento program je poskytovan otičem botičem
