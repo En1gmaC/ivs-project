@@ -10,7 +10,7 @@ Autori
 
 Nazev tymu
 - xlogin01 jmeno prijmeni 
-- xlogin02 jmeno prijmeni 
+- xvlcek31 Otakar Vlček 
 - xlogin03 jmeno prijmeni 
 - xlogin04 jmeno prijmeni 
 
