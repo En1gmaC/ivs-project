@@ -11,7 +11,7 @@ Autori
 Nazev tymu
 - xlogin01 jmeno prijmeni 
 - xvlcek31 Otakar Vlček 
-- xlogin03 jmeno prijmeni 
+- xbalca11 Petr Balcar
 - xlogin04 jmeno prijmeni 
 
 Licence
