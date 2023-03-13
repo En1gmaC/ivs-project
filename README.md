@@ -12,7 +12,7 @@ Nazev tymu
 - xlogin01 jmeno prijmeni 
 - xvlcek31 Otakar Vlček 
 - xlogin03 jmeno prijmeni 
-- xlogin04 jmeno prijmeni 
+- xpocar01 Jiří Počarovský
 
 Licence
 -------
