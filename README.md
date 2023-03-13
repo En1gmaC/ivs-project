@@ -17,4 +17,4 @@ Nazev tymu
 Licence
 -------
 
-Tento program je poskytovan otičem botičem
+Tento program je poskytovan
