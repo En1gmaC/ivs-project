@@ -1,12 +1,6 @@
 #ifndef adv_eq
 #define adv_eq
 
-// Constant used to calculate Nth root
-const long double GUESS;
-// Constant used to set the accuracy of the Nth root
-// smaller eps = better accuracy
-const long double eps;
-
 // Function returns factorial of "long long n"
 // n! =  n * (n-1) * (n-2) ... * 2 * 1
 unsigned long long fct(unsigned long long n);
