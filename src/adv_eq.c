@@ -1,8 +1,11 @@
 #include "adv_eq.h"
 
-const long double GUESS  = 3;
+// Constant used to calculate Nth root
+#define GUESS 3
 
-const long double EPS = 0.000000001;
+// Constant used to set the accuracy of the Nth root
+// smaller eps = better accuracy
+#define EPS 0.000000001
 
 unsigned long long fct(unsigned long long n)
 {
