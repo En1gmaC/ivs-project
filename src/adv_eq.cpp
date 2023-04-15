@@ -7,19 +7,19 @@
 // smaller eps = better accuracy
 #define EPS 0.000000001
 
-unsigned long long fct(unsigned long long n)
+double AdvMath::fct(unsigned long long n)
 {
-    if(n == 0) 
+    if(n == 0)
     {
         return 1;
-    } 
-    else 
+    }
+    else
     {
         return n * fct(n-1);
     }
 }
 
-long double pwr(long double e, long long n)
+double AdvMath::pwr(long double e, long long n)
 {
     if (n < 0)
     {
@@ -29,7 +29,7 @@ long double pwr(long double e, long long n)
     {
         return 1;
     }
-    
+
     long double r = 1;
 
     for (long long i = 0; i < n; i++)
@@ -39,7 +39,7 @@ long double pwr(long double e, long long n)
     return r;
 }
 
-long double absh(long double n)
+double AdvMath::absh(long double n)
 {
     if(n > 0)
     {
@@ -48,7 +48,7 @@ long double absh(long double n)
     else return -n;
 }
 
-long double root(long long n, long double x)
+double AdvMath::root(long long n, long double x)
 {
     if(n % 2 == 0 && n < 0)
     {
@@ -58,7 +58,7 @@ long double root(long long n, long double x)
     long double x_prev = GUESS;
     long double eps = EPS;
     long double diff = eps + 1;
-    long double N = n; 
+    long double N = n;
     long double x_K;
 
     while (diff > eps)
@@ -68,18 +68,18 @@ long double root(long long n, long double x)
         diff = absh(x_K - x_prev);
         x_prev = x_K;
     }
- 
+
     return x_K;
 }
 
-long long fib(long long n)
+double AdvMath::fib(long long n)
 {
     if (n <= 1)
     {
         return 0;
     }
-    
-    long long F_N; 
+
+    long long F_N;
     long long F_0 = 0;
     long long F_1 = 1;
     for (long long i = 0; i < n; i++)
@@ -97,3 +97,4 @@ long long fib(long long n)
     }
     return F_N;
 }
+
