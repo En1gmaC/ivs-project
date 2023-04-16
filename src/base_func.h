@@ -5,9 +5,9 @@ typedef enum{
     DIVISION_BY_ZERO,
 }ERROR;
 
-class BaseMath
+/*class BaseMath
 {
-public:
+public:*/
     /**
      * @brief Funtion for the sum of two numbers given by the parameters 'a' and 'b'
      * @param a First number
@@ -43,6 +43,6 @@ public:
      * @return Result of division of two numbers or error code 'SYNTAX ERROR' if 'b' equals 0
      */
     double div_f(double a, double b);
-};
+/*};*/
 
 #endif

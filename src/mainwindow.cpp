@@ -1,6 +1,9 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "base_func.cpp"
+//#include "adv_eq.cpp"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +20,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::AppendInput(QString number)
 {
-    CurrentNumInput += number;
+    int numLen = CurrentNumInput.length();
+    if(numLen <= 15) CurrentNumInput += number;
 }
 
 void MainWindow::ClearInput()
@@ -34,20 +38,37 @@ void MainWindow::CalculateBinaryResult(double x, double y, QString operation)
 {
     if(operation == "+")
     {
-        result = BaseMath::add_f(x,y);
+        result = add_f(x,y);
     }
     if(operation == "-")
     {
-        result = BaseMath::sub_f(x,y);
+        result = sub_f(x,y);
     }
     if(operation == "*")
     {
-        result = BaseMath::mul_f(x,y);
+        result = mul_f(x,y);
     }
     if(operation == "/")
     {
-        result = BaseMath::div_f(x,y);
+        result = div_f(x,y);
     }
+    if(operation == "sqrt")
+    {
+        result = root(x,y);
+    }
+}
+
+void MainWindow::CalculateUnaryResult(double x, QString operation)
+{
+    if(operation == "fib")
+    {
+        result = fib(x);
+    }
+    if(operation == "fact")
+    {
+        result = fct(x);
+    }
+
 }
 
 void MainWindow::on_pushButton0_pressed()
@@ -118,50 +139,76 @@ void MainWindow::on_pushButtonClean_pressed()
 
 void MainWindow::on_pushButtonComma_pressed()
 {
-    ui->display->setText(QString::number(9));
+    AppendInput(".");
+    ui->display->setText(CurrentNumInput);
 }
 
 void MainWindow::on_pushButtonEquals_pressed()
 {
     SetOperand(&operand2, CurrentNumInput);
-    /*CalculateBinaryResult(operand1, operand2, operation);*/
+    //CalculateBinaryResult(operand1, operand2, operation);
+    CalculateUnaryResult(operand1, operation);
     ClearInput();
+
+    ui->displayPrevNum->setText("");
+    ui->displayOper->setText("");
     ui->display->setText(QString::number(result));
 }
 
 void MainWindow::on_pushButtonPlus_pressed()
 {
-    //SetOperand(&operand)
+    SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "+";
-    ui->display->setText("+");
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("fib");
+    ui->display->setText(CurrentNumInput);
 }
 
 void MainWindow::on_pushButtonMinus_pressed()
 {
+    SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "-";
-    ui->display->setText("-");
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("-");
+    ui->display->setText(CurrentNumInput);
 }
 
 void MainWindow::on_pushButtonMultiply_pressed()
 {
+    SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "*";
-    ui->display->setText("*");
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("*");
+    ui->display->setText(CurrentNumInput);
 }
 
 void MainWindow::on_pushButtonDivide_pressed()
 {
+    SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "/";
-    ui->display->setText("/");
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("/");
+    ui->display->setText(CurrentNumInput);
 }
 
 
 void MainWindow::on_pushButtonFib_pressed()
 {
-    ui->display->setText(QString::number(9));
+    SetOperand(&operand1, CurrentNumInput);
+    ClearInput();
+    operation = "fib";
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("fib");
+    ui->display->setText(CurrentNumInput);
 }
 
 void MainWindow::on_pushButtonFact_pressed()

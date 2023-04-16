@@ -4,7 +4,7 @@
 #define GUESS 3
 
 // Constant used to set the accuracy of the Nth root
-// smaller eps = better accuracy  
+// smaller eps = better accuracy
 #define EPS 0.000000001
 
 double /*AdvMath::*/fct(double n)

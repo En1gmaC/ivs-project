@@ -3,7 +3,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <base_func.h>
+#include "base_func.h"
+#include "adv_eq.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,7 @@ public:
     void ClearInput();
     void SetOperand(double *value, QString input);
     void CalculateBinaryResult(double x, double y, QString operation);
+    void CalculateUnaryResult(double x, QString operation);
 
 private slots:
     void on_pushButton0_pressed();
@@ -52,6 +54,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString CurrentNumInput;
+    bool op1def;
+    bool op2def;
     double operand1;
     double operand2;
     QString operation;
