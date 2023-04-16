@@ -7,7 +7,7 @@
 // smaller eps = better accuracy
 #define EPS 0.000000001
 
-double AdvMath::fct(unsigned long long n)
+double /*AdvMath::*/fct(double n)
 {
     if(n == 0)
     {
@@ -19,7 +19,7 @@ double AdvMath::fct(unsigned long long n)
     }
 }
 
-double AdvMath::pwr(long double e, long long n)
+double /*AdvMath::*/pwr(double e, double n)
 {
     if (n < 0)
     {
@@ -39,7 +39,7 @@ double AdvMath::pwr(long double e, long long n)
     return r;
 }
 
-double AdvMath::absh(long double n)
+double /*AdvMath::*/absh(double n)
 {
     if(n > 0)
     {
@@ -48,7 +48,7 @@ double AdvMath::absh(long double n)
     else return -n;
 }
 
-double AdvMath::root(long long n, long double x)
+double /*AdvMath::*/root(int n, double x)
 {
     if(n % 2 == 0 && n < 0)
     {
@@ -72,7 +72,7 @@ double AdvMath::root(long long n, long double x)
     return x_K;
 }
 
-double AdvMath::fib(long long n)
+double /*AdvMath::*/fib(double n)
 {
     if (n <= 1)
     {
