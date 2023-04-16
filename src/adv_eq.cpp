@@ -74,13 +74,18 @@ double /*AdvMath::*/root(int n, double x)
 
 double /*AdvMath::*/fib(double n)
 {
-    if (n <= 1)
+    if (n == 0)
     {
         return 0;
     }
 
+    if (n == 1 || n == 2)
+    {
+        return 1;
+    }
+    
     long long F_N;
-    long long F_0 = 0;
+    long long F_0 = 1;
     long long F_1 = 1;
     for (long long i = 0; i < n; i++)
     {
@@ -97,4 +102,3 @@ double /*AdvMath::*/fib(double n)
     }
     return F_N;
 }
-
