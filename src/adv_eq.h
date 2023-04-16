@@ -1,44 +1,25 @@
 #ifndef adv_eq
 #define adv_eq
 
-class AdvMath
+/*class AdvMath
 {
-public:
-    /**
-     * @brief Function to calculate factorial of n
-     * @param n Unsigned long long
-     * @return Factorial of n
-     */
-    double fct(unsigned long long n);
+public:*/
+    // Function returns factorial of "long long n"
+    // n! =  n * (n-1) * (n-2) ... * 2 * 1
+    double fct(double n);
 
-    /**
-     * @brief Function to calculate value of e raised to the power n
-     * @param e Long double
-     * @param n Long long
-     * @return e raised to the power n, if n < 0 fuction returns 0
-     */
-    double pwr(long double e, long long n);
+    // Function returns "e^n", where "long long n" is a natural number (n >= 0), otherwise function returns 0
+    double pwr(double e, double n);
 
-    /**
-     * @brief Function to calculate n root of x
-     * @param e Long double
-     * @param n Long long
-     * @return n root of x
-     */
-    double root(long long n, long double x);
+    // Function returns "n_/-x-" (n root of x), where "long long n" is a whole number
+    double root(int n, double x);
 
-    /**
-     * @brief Function to calculate Fibbonaci sequence to n position
-     * @param n Unsigned long long
-     * @return Fibbonaci number to the n position, if n <= 1 function returns 0
-     */
-    double fib(long long n);
+    // Function returns Fibbonacci sequance to the "n"th position, where "long long n" is a natural number bigger than one (n > 1), otherwise function returns 0
+    // F_0 = 0, F_1 = 1
+    // F_n = F_n-1 + F_n-2
+    double fib(double n);
 
-    /**
-     * @brief Function to calculate absolute value of n
-     * @param n long double
-     * @return Absolute value of n
-     */
-    double absh(long double n);
-};
+    // Function returns absolute value of a "long long n"
+    double absh(double n);
+/*};*/
 #endif
