@@ -40,6 +40,7 @@ private slots:
     void on_pushButtonClean_pressed();
     void on_pushButtonComma_pressed();
     void on_pushButtonEquals_pressed();
+    void on_pushButtonNeg_pressed();
 
     void on_pushButtonPlus_pressed();
     void on_pushButtonMinus_pressed();
@@ -49,13 +50,15 @@ private slots:
     void on_pushButtonFib_pressed();
     void on_pushButtonFact_pressed();
     void on_pushButtonSqrt_pressed();
+    void on_pushButtonPwr2_pressed();
+    void on_pushButtonPwrN_pressed();
 
 
 private:
     Ui::MainWindow *ui;
     QString CurrentNumInput;
-    bool op1def;
-    bool op2def;
+    bool zeroDiv = false;
+    bool sqrtError = false;
     double operand1;
     double operand2;
     QString operation;

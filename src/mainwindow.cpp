@@ -21,7 +21,21 @@ MainWindow::~MainWindow()
 void MainWindow::AppendInput(QString number)
 {
     int numLen = CurrentNumInput.length();
-    if(numLen <= 15) CurrentNumInput += number;
+
+    if(number == "-" && numLen == 0)
+    {
+        CurrentNumInput += number;
+        return;
+    }
+
+    if(numLen <= 15 && number != "-")
+    {
+        CurrentNumInput += number;
+    }
+    else if(numLen > 15)
+    {
+        ui->displayError->setText("Way too many digits, I'm afraid, sir");
+    }
 }
 
 void MainWindow::ClearInput()
@@ -50,11 +64,33 @@ void MainWindow::CalculateBinaryResult(double x, double y, QString operation)
     }
     if(operation == "/")
     {
+        if(y == 0.0)
+        {
+            ui->displayError->setText("Division by zero, thats illegal!");
+            zeroDiv = true;
+            return;
+        }
         result = div_f(x,y);
     }
     if(operation == "sqrt")
     {
+        if(y < 0.0)
+        {
+            ui->displayError->setText("Wish I could count imaginary numbers");
+            sqrtError = true;
+            return;
+        }
+        if(x < 0.0)
+        {
+            ui->displayError->setText("Square root error, your number is < 0");
+            sqrtError = true;
+            return;
+        }
         result = root(x,y);
+    }
+    if(operation == "pwrn")
+    {
+        result = pwr(x,y);
     }
 }
 
@@ -67,6 +103,10 @@ void MainWindow::CalculateUnaryResult(double x, QString operation)
     if(operation == "fact")
     {
         result = fct(x);
+    }
+    if(operation == "pwr2")
+    {
+        result = pwr(x,2);
     }
 
 }
@@ -134,6 +174,9 @@ void MainWindow::on_pushButton9_pressed()
 void MainWindow::on_pushButtonClean_pressed()
 {
     ClearInput();
+    ui->displayOper->setText("");
+    ui->displayPrevNum->setText("");
+    ui->displayError->setText("");
     ui->display->setText(CurrentNumInput);
 }
 
@@ -143,15 +186,27 @@ void MainWindow::on_pushButtonComma_pressed()
     ui->display->setText(CurrentNumInput);
 }
 
+void MainWindow::on_pushButtonNeg_pressed()
+{
+    AppendInput("-");
+    ui->display->setText(CurrentNumInput);
+}
+
 void MainWindow::on_pushButtonEquals_pressed()
 {
     SetOperand(&operand2, CurrentNumInput);
-    //CalculateBinaryResult(operand1, operand2, operation);
-    CalculateUnaryResult(operand1, operation);
+
+    CalculateBinaryResult(operand1, operand2, operation);
+
     ClearInput();
 
     ui->displayPrevNum->setText("");
     ui->displayOper->setText("");
+    if(zeroDiv || sqrtError)
+    {
+        ui->display->setText("");
+        return;
+    }
     ui->display->setText(QString::number(result));
 }
 
@@ -162,7 +217,7 @@ void MainWindow::on_pushButtonPlus_pressed()
     operation = "+";
 
     ui->displayPrevNum->setText(QString::number(operand1));
-    ui->displayOper->setText("fib");
+    ui->displayOper->setText("+");
     ui->display->setText(CurrentNumInput);
 }
 
@@ -206,17 +261,54 @@ void MainWindow::on_pushButtonFib_pressed()
     ClearInput();
     operation = "fib";
 
-    ui->displayPrevNum->setText(QString::number(operand1));
-    ui->displayOper->setText("fib");
-    ui->display->setText(CurrentNumInput);
+    CalculateUnaryResult(operand1, operation);
+    ui->displayPrevNum->setText("Fib(" + QString::number(operand1) + ")");
+    ui->displayOper->setText("");
+    ui->display->setText(QString::number(result));
 }
 
 void MainWindow::on_pushButtonFact_pressed()
 {
-    ui->display->setText(QString::number(9));
+    SetOperand(&operand1, CurrentNumInput);
+    ClearInput();
+    operation = "fact";
+
+    CalculateUnaryResult(operand1, operation);
+    ui->displayPrevNum->setText("(" + QString::number(operand1) + ")!");
+    ui->displayOper->setText("");
+    ui->display->setText(QString::number(result));
 }
 
 void MainWindow::on_pushButtonSqrt_pressed()
 {
-    ui->display->setText(QString::number(9));
+    SetOperand(&operand1, CurrentNumInput);
+    ClearInput();
+    operation = "sqrt";
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("sqrt");
+    ui->display->setText(CurrentNumInput);
+}
+
+void MainWindow::on_pushButtonPwr2_pressed()
+{
+    SetOperand(&operand1, CurrentNumInput);
+    ClearInput();
+    operation = "pwr2";
+
+    CalculateUnaryResult(operand1, operation);
+    ui->displayPrevNum->setText(QString::number(operand1) + "^2");
+    ui->displayOper->setText("");
+    ui->display->setText(QString::number(result));
+}
+
+void MainWindow::on_pushButtonPwrN_pressed()
+{
+    SetOperand(&operand1, CurrentNumInput);
+    ClearInput();
+    operation = "pwrn";
+
+    ui->displayPrevNum->setText(QString::number(operand1));
+    ui->displayOper->setText("^");
+    ui->display->setText(CurrentNumInput);
 }
