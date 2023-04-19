@@ -5,7 +5,7 @@
 
 #define SQR 2
 
-//  Calculating the average of number
+//Calculating the average of number
 double getAvg(double sum, unsigned count)
 {
     double avg = div_f(sum, count);
@@ -14,7 +14,7 @@ double getAvg(double sum, unsigned count)
     return avg;
 }
 
-//  Putting all the numbers in to the final equation
+//Putting all the numbers in to the final equation
 double finalEq(double sum, double avg, unsigned count)
 {
     double result = div_f(1, sub_f(count, 1));
@@ -30,7 +30,7 @@ int main()
     unsigned count = 0;
     double num, sum = 0, sum_avg = 0;
 
-    //  Loading numbers from standard input, Calculating their sum^2 and normal sum, which is later used for Calculating the average
+    //Loading numbers from standard input, Calculating their sum^2 and normal sum, which is later used for Calculating the average
     while(scanf("%lf ", &num) != EOF)
     {
         count++;
