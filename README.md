@@ -17,4 +17,4 @@ Nazev tymu
 Licence
 -------
 
-Tento program je poskytovan
+Tento program je poskytovan GNU GPL v3.0
