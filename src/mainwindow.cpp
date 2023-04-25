@@ -28,7 +28,14 @@ void MainWindow::AppendInput(QString number)
         return;
     }
 
-    if(numLen <= 15 && number != "-")
+    if(number == "." && !commaIndicated)
+    {
+        CurrentNumInput += number;
+        commaIndicated = true;
+        return;
+    }
+
+    if(numLen <= 15 && number != "-" && number != ".")
     {
         CurrentNumInput += number;
     }
@@ -80,9 +87,9 @@ void MainWindow::CalculateBinaryResult(double x, double y, QString operation)
             sqrtError = true;
             return;
         }
-        if(x < 0.0)
+        if(x <= 0.0)
         {
-            ui->displayError->setText("Square root error, your number is < 0");
+            ui->displayError->setText("Square root error, your number is <= 0");
             sqrtError = true;
             return;
         }
@@ -98,10 +105,22 @@ void MainWindow::CalculateUnaryResult(double x, QString operation)
 {
     if(operation == "fib")
     {
+        if(x < 0)
+        {
+            ui->displayError->setText("SYNTAX ERROR - incorrect operand");
+            unaryOperandError = true;
+            return;
+        }
         result = fib(x);
     }
     if(operation == "fact")
     {
+        if(x < 0)
+        {
+            ui->displayError->setText("SYNTAX ERROR - incorrect operand");
+            unaryOperandError = true;
+            return;
+        }
         result = fct(x);
     }
     if(operation == "pwr2")
@@ -174,6 +193,8 @@ void MainWindow::on_pushButton9_pressed()
 void MainWindow::on_pushButtonClean_pressed()
 {
     ClearInput();
+    wasClickedBefore = false;
+    commaIndicated = false;
     ui->displayOper->setText("");
     ui->displayPrevNum->setText("");
     ui->displayError->setText("");
@@ -194,20 +215,28 @@ void MainWindow::on_pushButtonNeg_pressed()
 
 void MainWindow::on_pushButtonEquals_pressed()
 {
-    SetOperand(&operand2, CurrentNumInput);
-
-    CalculateBinaryResult(operand1, operand2, operation);
-
-    ClearInput();
-
-    ui->displayPrevNum->setText("");
-    ui->displayOper->setText("");
-    if(zeroDiv || sqrtError)
+    if(!wasClickedBefore)
     {
-        ui->display->setText("");
-        return;
+        SetOperand(&operand2, CurrentNumInput);
+        CalculateBinaryResult(operand1, operand2, operation);
+        ClearInput();
+
+        ui->displayPrevNum->setText("");
+        ui->displayOper->setText("");
+
+        if(zeroDiv || sqrtError)
+        {
+            ui->display->setText("");
+            zeroDiv = false;
+            sqrtError = false;
+            return;
+        }
+        ui->display->setText(QString::number(result));
+        ui->displayError->setText("");
+        CurrentNumInput = (QString::number(result));
+        wasClickedBefore = true;
+        commaIndicated = false;
     }
-    ui->display->setText(QString::number(result));
 }
 
 void MainWindow::on_pushButtonPlus_pressed()
@@ -215,7 +244,8 @@ void MainWindow::on_pushButtonPlus_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "+";
-
+    wasClickedBefore = false;
+    commaIndicated = false;
     ui->displayPrevNum->setText(QString::number(operand1));
     ui->displayOper->setText("+");
     ui->display->setText(CurrentNumInput);
@@ -226,7 +256,8 @@ void MainWindow::on_pushButtonMinus_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "-";
-
+    wasClickedBefore = false;
+    commaIndicated = false;
     ui->displayPrevNum->setText(QString::number(operand1));
     ui->displayOper->setText("-");
     ui->display->setText(CurrentNumInput);
@@ -237,7 +268,8 @@ void MainWindow::on_pushButtonMultiply_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "*";
-
+    wasClickedBefore = false;
+    commaIndicated = false;
     ui->displayPrevNum->setText(QString::number(operand1));
     ui->displayOper->setText("*");
     ui->display->setText(CurrentNumInput);
@@ -248,7 +280,8 @@ void MainWindow::on_pushButtonDivide_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "/";
-
+    wasClickedBefore = false;
+    commaIndicated = false;
     ui->displayPrevNum->setText(QString::number(operand1));
     ui->displayOper->setText("/");
     ui->display->setText(CurrentNumInput);
@@ -264,7 +297,17 @@ void MainWindow::on_pushButtonFib_pressed()
     CalculateUnaryResult(operand1, operation);
     ui->displayPrevNum->setText("Fib(" + QString::number(operand1) + ")");
     ui->displayOper->setText("");
-    ui->display->setText(QString::number(result));
+    if(unaryOperandError)
+    {
+        ClearInput();
+        result = 0.0;
+        unaryOperandError = false;
+        ui->display->setText(CurrentNumInput);
+    }
+    else
+    {
+        ui->display->setText(QString::number(result));
+    }
 }
 
 void MainWindow::on_pushButtonFact_pressed()
@@ -295,7 +338,7 @@ void MainWindow::on_pushButtonPwr2_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "pwr2";
-
+    commaIndicated = false;
     CalculateUnaryResult(operand1, operation);
     ui->displayPrevNum->setText(QString::number(operand1) + "^2");
     ui->displayOper->setText("");
@@ -307,8 +350,84 @@ void MainWindow::on_pushButtonPwrN_pressed()
     SetOperand(&operand1, CurrentNumInput);
     ClearInput();
     operation = "pwrn";
-
+    commaIndicated = false;
     ui->displayPrevNum->setText(QString::number(operand1));
     ui->displayOper->setText("^");
     ui->display->setText(CurrentNumInput);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_0)
+    {
+        on_pushButton0_pressed();
+    }
+    if(event->key() == Qt::Key_1)
+    {
+        on_pushButton1_pressed();
+    }
+    if(event->key() == Qt::Key_2)
+    {
+        on_pushButton2_pressed();
+    }
+    if(event->key() == Qt::Key_3)
+    {
+        on_pushButton3_pressed();
+    }
+    if(event->key() == Qt::Key_4)
+    {
+        on_pushButton4_pressed();
+    }
+    if(event->key() == Qt::Key_5)
+    {
+        on_pushButton5_pressed();
+    }
+    if(event->key() == Qt::Key_6)
+    {
+        on_pushButton6_pressed();
+    }
+    if(event->key() == Qt::Key_7)
+    {
+        on_pushButton7_pressed();
+    }
+    if(event->key() == Qt::Key_8)
+    {
+        on_pushButton8_pressed();
+    }
+    if(event->key() == Qt::Key_9)
+    {
+        on_pushButton9_pressed();
+    }
+
+    if(event->key() == Qt::Key_Plus)
+    {
+        on_pushButtonPlus_pressed();
+    }
+    if(event->key() == Qt::Key_Minus)
+    {
+        on_pushButtonMinus_pressed();
+    }
+    if(event->key() == Qt::Key_Asterisk)
+    {
+        on_pushButtonMultiply_pressed();
+    }
+    if(event->key() == Qt::Key_Slash)
+    {
+        on_pushButtonDivide_pressed();
+    }
+
+    if(event->key() == Qt::Key_Comma)
+    {
+        on_pushButtonComma_pressed();
+    }
+    if(event->key() == Qt::Key_Enter)
+    {
+        on_pushButtonEquals_pressed();
+    }
+    if(event->key() == Qt::Key_Backspace)
+    {
+        on_pushButtonClean_pressed();
+    }
+
+
 }
