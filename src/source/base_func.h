@@ -1,3 +1,9 @@
+/**
+ * @file     mainwindow.h
+ * @date     25.4.2023
+ * @author   Jiri Pocarovsky
+ */
+
 #ifndef base_func
 #define base_func
 
