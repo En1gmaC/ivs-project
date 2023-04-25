@@ -1,4 +1,8 @@
-
+/**
+ * @file     mainwindow.h
+ * @date     25.4.2023
+ * @author   Jiri Pocarovsky
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
