@@ -1,3 +1,9 @@
+/**
+ * @file     edv_eq.h
+ * @date     25.4.2023
+ * @author   Petr Balcar
+ */
+
 #ifndef adv_eq
 #define adv_eq
 
