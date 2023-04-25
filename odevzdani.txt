@@ -1,0 +1,18 @@
+Datum: 26.4 2023 00:00
+Projekt byl odevzdán na server: ivs.fit.vutbr.cz
+Archiv obsahuje: mockup/
+			mockup1.jpg
+		 profiling/
+			num.txt
+			zprava.txt
+		 src/
+			source/
+				Matematické knihovny
+				GUI
+		 	tests/
+				Testy
+			profiling/
+				Profiling zdrojový kód
+ 		 Makefile
+			
+		 	

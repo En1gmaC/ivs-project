@@ -1,0 +1,3 @@
+Narozdíl od plánu jsme se zpozdili se stanovenými termíny o pár dní. Se vzájemnou pomocí jsme však úkoly splnili.
+Komunikační kanály Discord a Messenger jsme regulerně používaly pro komunikaci a řešení problémů.
+Stejně tak jsme, jako podle plánu, používali Github jako systém pro správu verzí.

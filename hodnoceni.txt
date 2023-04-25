@@ -1,0 +1,4 @@
+xpocar01 100 (GUI a základní mat. operace)
+xbalca11 100 (pokročilé mat. operace)
+xvlcek31 100 (profiling, instalátory)
+xknazo02 100 (testy, dokumentace)
