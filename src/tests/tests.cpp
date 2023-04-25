@@ -1,3 +1,8 @@
+/**
+ * @file     test.cpp
+ * @date     25.4.2023
+ * @author   Rostislav Knazovcik
+ */
 
 #include "../source/base_func.h"
 #include "../source/base_func.cpp"
