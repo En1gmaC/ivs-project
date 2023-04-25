@@ -1,5 +1,5 @@
 /**
- * @file     mainwindow.h
+ * @file     base_func.h
  * @date     25.4.2023
  * @author   Jiri Pocarovsky
  */
