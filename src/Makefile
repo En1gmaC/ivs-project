@@ -15,7 +15,7 @@ profile:
 clean:
 	cd source/ && make clean && rm Makefile
 	cd tests/ && make clean && rm Makefile && rm CMakeCache.txt && rm -r CMakeFiles && rm cmake_install.cmake
-	cd profiling/ && rm stdev.o && rm stdev
+	cd profiling/ && rm stdev
 
 run: all
 	cd source/ && ./CalcuLux

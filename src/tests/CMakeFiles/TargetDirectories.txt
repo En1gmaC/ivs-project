@@ -1,3 +1,0 @@
-/home/ovlce/ivs2/ivs-project/src/tests/CMakeFiles/test.dir
-/home/ovlce/ivs2/ivs-project/src/tests/CMakeFiles/edit_cache.dir
-/home/ovlce/ivs2/ivs-project/src/tests/CMakeFiles/rebuild_cache.dir
