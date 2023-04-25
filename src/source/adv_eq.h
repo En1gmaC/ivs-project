@@ -7,7 +7,7 @@ public:*/
     /**
      * @brief Function to calculate factorial of n
      * @param n Number
-     * @return Factorial of n
+     * @return Factorial of n, if n < 0 function returns 0
      */
     double fct(double n);
 
