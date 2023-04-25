@@ -12,12 +12,12 @@ SOURCES += \
     adv_eq.cpp \
     base_func.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp 
 
 HEADERS += \
     adv_eq.h \
     base_func.h \
-    mainwindow.h
+    mainwindow.h  
 
 FORMS += \
     mainwindow.ui

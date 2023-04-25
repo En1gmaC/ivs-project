@@ -1,0 +1,3 @@
+Program nejvíce volá funkci add_f a pwr a to z důvodu, že se obě funkce používají v sumě vzorce, tudíž to i dává smysl.
+Při optimalizaci bych se tedy zaměřil na rychleší sčítání a mocnění.
+Optimalizace kódu ovšem nebude jednoduchá  
