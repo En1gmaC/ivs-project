@@ -21,4 +21,5 @@ Archiv obsahuje:
 		odevzdani.txt
 		hodnoceni.txt
 		skutecnost.txt
+		uzivatelska-prirucka.pdf
 		README.md
