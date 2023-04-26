@@ -1,6 +1,8 @@
 Datum: 26.4 2023 00:00
 Projekt byl odevzdán na server: ivs.fit.vutbr.cz
 Archiv obsahuje:
+		 install/
+		 	Instalátor
 		 mockup/
 			mockup1.jpg
 		 profiling/
@@ -14,9 +16,9 @@ Archiv obsahuje:
 				Testy
 			profiling/
 				Profiling zdrojový kód
-			debugging.PNG
-			debugging2.PNG
-			odevzdani.txt
-			hodnoceni.txt
-			skutecnost.txt
-			README.md
+		debugging.PNG
+		debugging2.PNG
+		odevzdani.txt
+		hodnoceni.txt
+		skutecnost.txt
+		README.md

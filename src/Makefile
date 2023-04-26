@@ -23,7 +23,7 @@ clean:
 	cd tests/ && make clean && rm Makefile && rm CMakeCache.txt && rm -r CMakeFiles && rm cmake_install.cmake
 	cd profiling/ && rm stdev
 	rm -r html
-
+	
 ## run (spustí program)
 run: all
 	cd source/ && ./CalcuLux
